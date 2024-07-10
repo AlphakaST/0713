@@ -32,7 +32,7 @@ if st.button("전송"):
                 )
         
         # 응답 표시
-        answer = response.choices[0].message["content"].strip()
+        answer = response.choices[0].message.content.strip()
         st.write(f"GPT-4o의 응답: {answer}")
 
         # 메시지 히스토리에 추가
