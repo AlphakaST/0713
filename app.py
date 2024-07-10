@@ -7,8 +7,8 @@ from openai import OpenAI
 client = OpenAI(api_key=st.secrets["openai"]["api_key"])
 
 # Streamlit 앱 설정
-st.title("학생들을 위한 GPT-4 챗봇")
-st.write("안녕하세요! 저는 GPT-4 기반 챗봇입니다. 무엇이든 물어보세요.")
+st.title("학생들을 위한 GPT 챗봇")
+st.write("안녕하세요! 저는 GPT 기반 챗봇입니다. 무엇이든 물어보세요.")
 
 # 채팅 히스토리 초기화
 if "messages" not in st.session_state:
@@ -32,7 +32,8 @@ if st.button("전송"):
                 )
         
         # 응답 표시
-        answer = response.choices[0].text.strip()
+        answer = response.choices[0].message["content"].strip()
+        st.write(f"GPT-4o의 응답: {answer}")
 
         # 메시지 히스토리에 추가
         st.session_state.messages.append({"role": "user", "content": user_input})
